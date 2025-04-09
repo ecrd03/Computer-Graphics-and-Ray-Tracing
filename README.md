@@ -3,6 +3,8 @@ This ray tracing renderer is a C-based project designed to demonstrate fundament
 
 To compile and run the renderer, use the following commands:
 
+cd assignments
+
 make clean
 
 make
@@ -15,4 +17,8 @@ make rendertest
 
 ./bin/rendertest
 
+sudo apt-get install feh
+
 feh ppm/testRenderSimpleNonLightedScene.ppm
+
+The rendered image output can be viewed directly from the repository files, located in the same directory as this README. This makes it easy for viewers to access and review the rendering results.
