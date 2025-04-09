@@ -1,0 +1,158 @@
+#include "tuple.h"
+#include <math.h>
+
+//Tuples
+Tuple
+tuple (double x, double y, double z, double w)
+{
+  Tuple t = { x, y, z, w };
+  return t;
+}
+
+Tuple
+point (double x, double y, double z)
+{
+  return tuple (x, y, z, 1.0);
+}
+
+Tuple
+vector (double x, double y, double z)
+{
+  return tuple (x, y, z, 0.0);
+}
+
+unsigned int
+is_point (Tuple t)
+{
+  return t.w == 1.0;
+}
+
+unsigned int
+is_vector (Tuple t)
+{
+  return t.w == 0.0;
+}
+
+Tuple
+addTuples (Tuple a, Tuple b)
+{
+  double x = a.x + b.x;
+  double y = a.y + b.y;
+  double z = a.z + b.z;
+  double w = a.w + b.w;
+
+  return tuple (x, y, z, w);
+}
+
+Tuple
+subTuples (Tuple a, Tuple b)
+{
+  double x = a.x - b.x;
+  double y = a.y - b.y;
+  double z = a.z - b.z;
+  double w = a.w - b.w;
+
+  return tuple (x, y, z, w);
+}
+
+Tuple
+negateTuple (Tuple t)
+{
+  double x = -t.x;
+  double y = -t.y;
+  double z = -t.z;
+  double w = -t.w;
+
+  return tuple (x, y, z, w);
+}
+
+Tuple
+scalarMultTuple (double scalar, Tuple t)
+{
+  double x = t.x * scalar;
+  double y = t.y * scalar;
+  double z = t.z * scalar;
+  double w = t.w * scalar;
+
+  return tuple (x, y, z, w);
+}
+
+Tuple
+scalarDivideTuple (Tuple t, double scalar)
+{
+  double x = t.x / scalar;
+  double y = t.y / scalar;
+  double z = t.z / scalar;
+  double w = t.w / scalar;
+
+  return tuple (x, y, z, w);
+}
+
+double
+magnitudeOfVector (Tuple v)
+{
+  return sqrt (v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
+Tuple
+normalizeVector (Tuple v)
+{
+  double mag = magnitudeOfVector (v);
+
+  return scalarDivideTuple (v, mag);
+}
+
+double
+dotProduct (Tuple a, Tuple b)
+{
+  return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+//Color
+Color
+color (double red, double green, double blue)
+{
+  return (Color)
+  {
+  red, green, blue};
+}
+
+Color
+addColors (Color a, Color b)
+{
+  double red = a.red + b.red;
+  double green = a.green + b.green;
+  double blue = a.blue + b.blue;
+
+  return color (red, green, blue);
+}
+
+Color
+subColors (Color a, Color b)
+{
+  double red = a.red - b.red;
+  double green = a.green - b.green;
+  double blue = a.blue - b.blue;
+
+  return color (red, green, blue);
+}
+
+Color
+scalarMultColor (double scalar, Color c)
+{
+  double red = c.red * scalar;
+  double green = c.green * scalar;
+  double blue = c.blue * scalar;
+
+  return color (red, green, blue);
+}
+
+Color
+multColors (Color a, Color b)
+{
+  double red = a.red * b.red;
+  double green = a.green * b.green;
+  double blue = a.blue * b.blue;
+
+  return color (red, green, blue);
+}
